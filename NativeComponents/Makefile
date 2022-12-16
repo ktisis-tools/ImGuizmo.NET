@@ -17,9 +17,9 @@ endif
 
 ifeq ($(OS),Windows_NT)
 CXXLDFLAGS += -mwindows
-.DEFAULT_GOAL: ImGuizmo-Bridge.dll
+.DEFAULT_GOAL := ImGuizmo-Bridge.dll
 else
-.DEFAULT_GOAL: libImGuizmo-Bridge.so
+.DEFAULT_GOAL := libImGuizmo-Bridge.so
 endif
 
 .PHONY: clean
