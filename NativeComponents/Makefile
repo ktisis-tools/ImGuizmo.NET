@@ -57,3 +57,5 @@ clean:
 	$(RM) -rf ImGui/obj/
 	$(RM) -rf ImGuizmo/obj/
 	$(RM) -rf ImGuizmo.Bridge/obj/
+	$(RM) libImGuizmo-Bridge.so
+	$(RM) ImGuizmo-Bridge.dll
