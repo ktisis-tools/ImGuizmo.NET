@@ -1,0 +1,6 @@
+[submodule "NativeComponents/ImGuizmo"]
+	path = NativeComponents/ImGuizmo
+	url = git@github.com:ktisis-tools/ImGuizmo
+[submodule "NativeComponents/ImGui"]
+	path = NativeComponents/ImGui
+	url = git@github.com:goatcorp/gc-imgui/
