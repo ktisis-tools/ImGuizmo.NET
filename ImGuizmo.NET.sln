@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuizmo.NET", "ImGuizmo.NET\ImGuizmo.NET.csproj", "{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuizmo.NET.SampleApp", "ImGuizmo.NET.SampleApp\ImGuizmo.NET.SampleApp.csproj", "{8BB2800A-79BC-45EF-96FF-87C82DCCD830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB2800A-79BC-45EF-96FF-87C82DCCD830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB2800A-79BC-45EF-96FF-87C82DCCD830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB2800A-79BC-45EF-96FF-87C82DCCD830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB2800A-79BC-45EF-96FF-87C82DCCD830}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

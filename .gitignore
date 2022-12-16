@@ -1,0 +1,6 @@
+# Relatively simple .gitignore to start out with.
+
+.idea
+bin
+obj
+*.DotSettings.user
