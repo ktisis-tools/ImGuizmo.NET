@@ -16,7 +16,6 @@ endef
 endif
 
 ifeq ($(OS),Windows_NT)
-CXXLDFLAGS += -mwindows
 .DEFAULT_GOAL := ImGuizmo-Bridge.dll
 else
 .DEFAULT_GOAL := libImGuizmo-Bridge.so
@@ -53,7 +52,7 @@ libImGuizmo-Bridge.so: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
 	$(call run_command, CXXLD, $(CXX), -o, $^, $(CXXFLAGS) $(CXXLDFLAGS))
 
 ImGuizmo-Bridge.dll: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
-	$(call run_command, CXXLD, $(CXX), -o, $^, $(CXXFLAGS) $(CXXLDFLAGS))
+	$(call run_command, CXXLD, $(CXX), -o, $^, $(CXXFLAGS) $(CXXLDFLAGS) -mwindows)
 
 clean:
 	$(RM) -rf ImGui/obj/
