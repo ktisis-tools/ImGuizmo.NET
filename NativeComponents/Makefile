@@ -26,7 +26,7 @@ endif
 
 IMGUI_OBJS := $(addprefix ImGui/obj/, imgui.o imgui_tables.o imgui_widgets.o)
 IMGUIZMO_OBJS := $(addprefix ImGuizmo/obj/, ImGuizmo.o GraphEditor.o ImCurveEdit.o ImGradient.o ImSequencer.o)
-BRIDGE_OBJS := $(addprefix ImGuizmo.Bridge/obj/, )
+BRIDGE_OBJS := $(addprefix ImGuizmo.Bridge/obj/, bridge.o)
 
 ImGui/obj/%.o: ImGui/%.cpp ImGui/imgui.h ImGui/imgui_internal.h
 	@mkdir -p $(@D)
