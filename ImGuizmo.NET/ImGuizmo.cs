@@ -107,6 +107,96 @@ public static class ImGuizmo {
 		}
 	}
 
+	/**
+	 * <summary>
+	 * Manipulate a matrix using the Gizmo.
+	 * </summary>
+	 * <param name="view">The view matrix to use for drawing the Gizmo.</param>
+	 * <param name="projection">The projection matrix to use for drawing the Gizmo.</param>
+	 * <param name="operation">The allowed operations.</param>
+	 * <param name="mode">The local/world mode.</param>
+	 * <param name="matrix">The matrix to manipulate. Manipulations will occur directly on this matrix.</param>
+	 * <returns><c>true</c> if the matrix was manipulated. <c>false</c> otherwise.</returns>
+	 */
+	[PublicAPI]
+	public static unsafe bool Manipulate(
+		Matrix4x4 view, Matrix4x4 projection, Operation operation, Mode mode,
+		ref Matrix4x4 matrix
+	) {
+		fixed(Matrix4x4* pMatrix = &matrix) {
+			return NativeInterface.Ktisis_ImGuizmo_Manipulate(&view.M11, &projection.M11, operation, mode, &pMatrix->M11, null, null, null, null);
+		}
+	}
+
+	/**
+	 * <summary>
+	 * Manipulate a matrix using the Gizmo.
+	 * </summary>
+	 * <param name="view">The view matrix to use for drawing the Gizmo.</param>
+	 * <param name="projection">The projection matrix to use for drawing the Gizmo.</param>
+	 * <param name="operation">The allowed operations.</param>
+	 * <param name="mode">The local/world mode.</param>
+	 * <param name="matrix">The matrix to manipulate. Manipulations will occur directly on this matrix. (And recorded into the <c>deltaMatrix</c>)</param>
+	 * <param name="deltaMatrix">A matrix to record deltas into. Manipulations will be recorded into this matrix. (And applied to the <c>matrix</c>)</param>
+	 * <returns><c>true</c> if the matrix was manipulated. <c>false</c> otherwise.</returns>
+	 */
+	[PublicAPI]
+	public static unsafe bool Manipulate(
+		Matrix4x4 view, Matrix4x4 projection, Operation operation, Mode mode,
+		ref Matrix4x4 matrix, out Matrix4x4 deltaMatrix
+	) {
+		fixed(Matrix4x4* pMatrix = &matrix, pDeltaMatrix = &deltaMatrix) {
+			return NativeInterface.Ktisis_ImGuizmo_Manipulate(
+				&view.M11, &projection.M11, operation, mode,
+				&pMatrix->M11, &pDeltaMatrix->M11,
+				null, null, null
+			);
+		}
+	}
+
+	/* NOTE: The below overloads are unverified. Use at your own risk. */
+
+	/* TODO: Verify args, write docs */
+	public static unsafe bool Manipulate(
+		Matrix4x4 view, Matrix4x4 projection, Operation operation, Mode mode,
+		ref Matrix4x4 matrix, out Matrix4x4 deltaMatrix, Vector3 snap
+	) {
+		fixed(Matrix4x4* pMatrix = &matrix, pDeltaMatrix = &deltaMatrix) {
+			return NativeInterface.Ktisis_ImGuizmo_Manipulate(
+				&view.M11, &projection.M11, operation, mode,
+				&pMatrix->M11, &pDeltaMatrix->M11, &snap.X,
+				null, null
+			);
+		}
+	}
+
+	/* TODO: Verify args, write docs */
+	public static unsafe bool Manipulate(
+		Matrix4x4 view, Matrix4x4 projection, Operation operation, Mode mode,
+		ref Matrix4x4 matrix, out Matrix4x4 deltaMatrix, Vector3 snap, Matrix4x4 localBounds
+	) {
+		fixed(Matrix4x4* pMatrix = &matrix, pDeltaMatrix = &deltaMatrix) {
+			return NativeInterface.Ktisis_ImGuizmo_Manipulate(
+				&view.M11, &projection.M11, operation, mode,
+				&pMatrix->M11, &pDeltaMatrix->M11, &snap.X, &localBounds.M11,
+				null
+			);
+		}
+	}
+
+	/* TODO: Verify args, write docs */
+	public static unsafe bool Manipulate(
+		Matrix4x4 view, Matrix4x4 projection, Operation operation, Mode mode,
+		ref Matrix4x4 matrix, out Matrix4x4 deltaMatrix, Vector3 snap, Matrix4x4 localBounds, Matrix4x4 boundsSnap
+	) {
+		fixed(Matrix4x4* pMatrix = &matrix, pDeltaMatrix = &deltaMatrix) {
+			return NativeInterface.Ktisis_ImGuizmo_Manipulate(
+				&view.M11, &projection.M11, operation, mode,
+				&pMatrix->M11, &pDeltaMatrix->M11, &snap.X, &localBounds.M11, &boundsSnap.M11
+			);
+		}
+	}
+
 	/** <summary>The current Gizmo style. Cannot be set, but writes to the referenced structure will be reflected in the actual used style.</summary> */
 	[PublicAPI]
 	public static unsafe ref Style Style => ref *NativeInterface.Ktisis_ImGuizmo_GetStyle();
