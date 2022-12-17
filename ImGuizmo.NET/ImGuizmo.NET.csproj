@@ -15,6 +15,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<RootNamespace>Ktisis.ImGuizmo</RootNamespace>
 	</PropertyGroup>
 	
 	<ItemGroup>
