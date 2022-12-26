@@ -1,6 +1,12 @@
-# Relatively simple .gitignore to start out with.
-
+# IDE Support
 .idea
+.vs
+
+# Build files
 bin
 obj
-*.DotSettings.user
+x64
+*.log
+
+# Local User Configuration
+*.user
