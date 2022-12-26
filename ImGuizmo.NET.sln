@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuizmo.NET", "ImGuizmo.NET\ImGuizmo.NET.csproj", "{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuizmo.NET", "ImGuizmo.NET\ImGuizmo.NET.csproj", "{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|x64.ActiveCfg = Debug|x64
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Debug|x64.Build.0 = Debug|x64
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|x64.ActiveCfg = Release|Any CPU
+		{EFE75013-1FA0-426E-A00D-A1C2302A7ACA}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA966AA6-EE09-4169-BA00-DF4BB68F627D}
 	EndGlobalSection
 EndGlobal
