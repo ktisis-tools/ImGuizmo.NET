@@ -13,7 +13,7 @@ The .NET Library may be built directly from the `ImGuizmo.NET/ImGuizmo.NET.cspro
 The native components require ImGui and ImGuizmo, which are hosted in separate repositories.
 Run `git submodule update --init` to download them. (Note that the default configuration uses SSH as the transport protocol; you may need to adjust the URL for different configurations.[^1])
 
-Afterwards, use `make` in the `NativeComponents` folder to build the native assembly for your current platform.
+Afterwards, use `make`[^2] in the `NativeComponents` folder to build the native assembly for your current platform.
 If you wish to build for a different platform, set up your compiling environment as appropriate and specify the name of the assembly. (`ImGuizmo-Bridge.dll` for Windows, `libImGuizmo-Bridge.so` for other platforms)
 
 ## Including
@@ -33,3 +33,4 @@ Thank you to:
 ## Footnotes
 
 [^1]: On Windows systems, if your SSH Key requires a passphrase, you may need to run `git submodule update --init` from Git Bash instead of the built-in command prompt due to a problem with the passphrase prompt.
+[^2]: Please ensure you are using a GNU Make-compatible `make` binary. NMake is currently not supported.
