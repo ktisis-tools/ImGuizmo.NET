@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|x64">
+			<Configuration>Debug</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|x64">
+			<Configuration>Release</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<ItemGroup Label="ImGui">
+		<None Include="ImGui\.editorconfig" />
+		<Text Include="ImGui\LICENSE.txt" />
+		<ClInclude Include="ImGui\imconfig.h" />
+		<ClInclude Include="ImGui\imgui.h" />
+		<ClInclude Include="ImGui\imgui_internal.h" />
+		<ClInclude Include="ImGui\imstb_rectpack.h" />
+		<ClInclude Include="ImGui\imstb_textedit.h" />
+		<ClInclude Include="ImGui\imstb_truetype.h" />
+
+		<ClCompile Include="ImGui\imgui.cpp" />
+		<ClCompile Include="ImGui\imgui_demo.cpp" />
+		<ClCompile Include="ImGui\imgui_draw.cpp" />
+		<ClCompile Include="ImGui\imgui_tables.cpp" />
+		<ClCompile Include="ImGui\imgui_widgets.cpp" />
+	</ItemGroup>
+	<ItemGroup Label="ImGuizmo">
+		<None Include="ImGuizmo\.editorconfig" />
+		<None Include="ImGuizmo\LICENSE" />
+		<None Include="ImGuizmo\Makefile" />
+		<None Include="ImGuizmo\README.md" />
+
+
+		<ClInclude Include="ImGuizmo\GraphEditor.h" />
+		<ClInclude Include="ImGuizmo\ImCurveEdit.h" />
+		<ClInclude Include="ImGuizmo\ImGradient.h" />
+		<ClInclude Include="ImGuizmo\ImGuizmo.h" />
+		<ClInclude Include="ImGuizmo\ImSequencer.h" />
+		<ClInclude Include="ImGuizmo\ImZoomSlider.h" />
+
+
+		<ClCompile Include="ImGuizmo\GraphEditor.cpp" />
+		<ClCompile Include="ImGuizmo\ImCurveEdit.cpp" />
+		<ClCompile Include="ImGuizmo\ImGradient.cpp" />
+		<ClCompile Include="ImGuizmo\ImGuizmo.cpp" />
+		<ClCompile Include="ImGuizmo\ImSequencer.cpp" />
+	</ItemGroup>
+	<ItemGroup Label="ImGuizmo.Bridge">
+		<ClInclude Include="ImGuizmo.Bridge\include\bridge.h" />
+		<ClCompile Include="ImGuizmo.Bridge\src\bridge.cpp" />
+	</ItemGroup>
+	<PropertyGroup Label="Globals">
+		<VCProjectVersion>17.0</VCProjectVersion>
+		<ProjectGuid>{AC2F29A6-5129-465C-8680-018CCEA3B63A}</ProjectGuid>
+		<Keyword>Win32Proj</Keyword>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	<PropertyGroup Label="Global Configuration">
+		<ConfigurationType>MakeFile</ConfigurationType>
+		<PlatformToolset>v143</PlatformToolset>
+		<!-- We need GNU make for this Makefile... -->
+		<NMakeBuildCommandLine>gmake</NMakeBuildCommandLine>
+		<NMakeCleanCommandLine>gmake clean</NMakeCleanCommandLine>
+		<NMakeReBuildCommandLine>gmake</NMakeReBuildCommandLine>
+		<NMakeIncludeSearchPath>ImGui;ImGuizmo.Bridge/include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+		<NMakeOutput>ImGuizmo-Bridge.dll</NMakeOutput>
+	</PropertyGroup>
+	<PropertyGroup Condition="Configuration == 'Debug'" Label="Configuration">
+		<UseDebugLibraries>true</UseDebugLibraries>
+	</PropertyGroup>
+	<PropertyGroup Condition="Configuration == 'Release'" Label="Configuration">
+		<UseDebugLibraries>true</UseDebugLibraries>
+		<NMakePreprocessorDefinitions>NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" />
+	<ImportGroup Label="ExtensionSettings">
+	</ImportGroup>
+	<ImportGroup Label="Shared">
+	</ImportGroup>
+	<ImportGroup Label="PropertySheets">
+		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+	</ImportGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+	<ImportGroup Label="ExtensionTargets">
+	</ImportGroup>
+</Project>
