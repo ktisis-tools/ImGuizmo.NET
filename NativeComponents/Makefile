@@ -23,6 +23,20 @@ else
 os_target := libImGuizmo-Bridge.so
 endif
 
+ifndef write_file
+$(info Using shell auto-detection to determine the correct commands / args for your shell (supply `write_file` and `echo_empty` if generating the license fails))
+ifneq ($(findstring cmd.exe, $(SHELL)),)
+$(info Detected Windows cmd.exe.)
+write_file := type
+echo_empty := echo.
+else
+$(info Detected POSIX-compatible shell.)
+write_file := cat
+echo_empty := echo
+endif
+
+endif
+
 .PHONY: clean build
 
 IMGUI_OBJS := $(addprefix ImGui/obj/, imgui.o imgui_tables.o imgui_widgets.o imgui_draw.o)
@@ -56,7 +70,23 @@ libImGuizmo-Bridge.so: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
 ImGuizmo-Bridge.dll: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
 	$(call run_command, CXXLD, $(CXX), -o, $^, $(CXXFLAGS) $(CXXLDFLAGS) -mwindows)
 
-build: $(os_target)
+build: ImGuizmo-Bridge.LICENSE.txt $(os_target)
+
+ImGuizmo-Bridge.LICENSE.txt: ../LICENSE ImGui/LICENSE.txt ImGuizmo/LICENSE
+ifdef make_info
+	@$(make_info) CAT $@ $^ ';' $? ';'
+else
+	@echo Generating ImGuizmo-Bridge.LICENSE.txt...
+endif
+	@$(write_file) ../LICENSE > $@
+	@$(echo_empty) >> $@
+	@echo Contains code from ImGui, licensed under the following terms: >> $@
+	@$(echo_empty) >> $@
+	@$(write_file) ImGui/LICENSE.txt >> $@
+	@$(echo_empty) >> $@
+	@echo Contains code from ImGuizmo, licensed under the following terms: >> $@
+	@$(echo_empty) >> $@
+	@$(write_file) ImGuizmo/LICENSE >> $@
 
 clean:
 	$(RM) -rf ImGui/obj/
@@ -64,3 +94,4 @@ clean:
 	$(RM) -rf ImGuizmo.Bridge/obj/
 	$(RM) libImGuizmo-Bridge.so
 	$(RM) ImGuizmo-Bridge.dll
+	$(RM) ImGuizmo-Bridge.LICENSE.txt
