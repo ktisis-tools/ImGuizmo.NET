@@ -15,13 +15,15 @@ define run_command
 endef
 endif
 
+.DEFAULT_GOAL := build
+
 ifeq ($(OS),Windows_NT)
-.DEFAULT_GOAL := ImGuizmo-Bridge.dll
+os_target := ImGuizmo-Bridge.dll
 else
-.DEFAULT_GOAL := libImGuizmo-Bridge.so
+os_target := libImGuizmo-Bridge.so
 endif
 
-.PHONY: clean
+.PHONY: clean build
 
 IMGUI_OBJS := $(addprefix ImGui/obj/, imgui.o imgui_tables.o imgui_widgets.o imgui_draw.o)
 IMGUIZMO_OBJS := $(addprefix ImGuizmo/obj/, ImGuizmo.o GraphEditor.o ImCurveEdit.o ImGradient.o ImSequencer.o)
@@ -53,6 +55,8 @@ libImGuizmo-Bridge.so: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
 
 ImGuizmo-Bridge.dll: $(IMGUI_OBJS) $(IMGUIZMO_OBJS) $(BRIDGE_OBJS)
 	$(call run_command, CXXLD, $(CXX), -o, $^, $(CXXFLAGS) $(CXXLDFLAGS) -mwindows)
+
+build: $(os_target)
 
 clean:
 	$(RM) -rf ImGui/obj/
