@@ -23,3 +23,23 @@ jobs:
           path: |
             NativeComponents/ImGuizmo-Bridge.dll
             NativeComponents/ImGuizmo-Bridge.LICENSE.txt
+
+  compile-for-linux:
+    name: Compile for Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Compile Native Components
+        run: |
+          cd NativeComponents/
+          make
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: native-linux
+          path: |
+            NativeComponents/libImGuizmo-Bridge.so
+            NativeComponents/ImGuizmo-Bridge.LICENSE.txt
