@@ -1,0 +1,25 @@
+name: Build
+on:
+  - workflow_dispatch
+
+jobs:
+  compile-for-windows:
+    name: Compile for Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Compile Native Components
+        shell: C:\msys64\usr\bin\bash.exe -e '{0}'
+        run: |
+          cd NativeComponents/
+          make
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: native-windows
+          path: |
+            NativeComponents/ImGuizmo-Bridge.dll
+            NativeComponents/ImGuizmo-Bridge.LICENSE.txt
