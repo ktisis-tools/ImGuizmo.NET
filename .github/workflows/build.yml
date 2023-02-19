@@ -66,3 +66,47 @@ jobs:
           name: dotnet
           path: |
             bin/Release/
+
+  package-results:
+    name: Package Workflow Results
+    runs-on: ubuntu-latest
+    needs:
+      - compile-for-windows
+      - compile-for-linux
+      - compile-net-wrapper
+    steps:
+      - name: Pull Windows Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: native-windows
+          path: windows
+      - name: Pull Linux Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: native-linux
+          path: linux
+      - name: Pull .NET Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dotnet
+          path: dotnet
+      - name: Verify LICENSE Consistency
+        run: |
+          set +e
+          difference="$(diff --strip-trailing-cr -u windows/ImGuizmo-Bridge.LICENSE.txt linux/ImGuizmo-Bridge.LICENSE.txt)"
+          if [[ "$?" -ne 0 ]]; then
+            printf "Detected discrepancy in LICENSE files, aborting!\n\nDiff:\n%s\n" "$difference" >&2
+            exit 1
+          fi
+      - name: Package Results
+        run: |
+          mkdir package
+          mv windows/ImGuizmo-Bridge.dll package/
+          mv linux/libImGuizmo-Bridge.so package/
+          mv linux/ImGuizmo-Bridge.LICENSE.txt package/
+          mv dotnet/* package/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: imguizmo
+          path: package/*
