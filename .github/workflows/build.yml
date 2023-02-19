@@ -43,3 +43,26 @@ jobs:
           path: |
             NativeComponents/libImGuizmo-Bridge.so
             NativeComponents/ImGuizmo-Bridge.LICENSE.txt
+
+  compile-net-wrapper:
+    name: Compile .NET wrapper
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: false # Don't need submodules here
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Build .NET Library
+        run: |
+          cd ImGuizmo.NET
+          dotnet build -c Release --nologo -o ../bin/Release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dotnet
+          path: |
+            bin/Release/
