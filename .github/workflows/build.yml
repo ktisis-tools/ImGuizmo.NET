@@ -1,0 +1,113 @@
+name: Build
+on:
+  - workflow_dispatch
+  - workflow_call
+
+jobs:
+  compile-for-windows:
+    name: Compile for Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Compile Native Components
+        shell: C:\msys64\usr\bin\bash.exe -e '{0}'
+        run: |
+          cd NativeComponents/
+          make
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: native-windows
+          path: |
+            NativeComponents/ImGuizmo-Bridge.dll
+            NativeComponents/ImGuizmo-Bridge.LICENSE.txt
+
+  compile-for-linux:
+    name: Compile for Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Compile Native Components
+        run: |
+          cd NativeComponents/
+          make
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: native-linux
+          path: |
+            NativeComponents/libImGuizmo-Bridge.so
+            NativeComponents/ImGuizmo-Bridge.LICENSE.txt
+
+  compile-net-wrapper:
+    name: Compile .NET wrapper
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: false # Don't need submodules here
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Build .NET Library
+        run: |
+          cd ImGuizmo.NET
+          dotnet build -c Release --nologo -o ../bin/Release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dotnet
+          path: |
+            bin/Release/
+
+  package-results:
+    name: Package Workflow Results
+    runs-on: ubuntu-latest
+    needs:
+      - compile-for-windows
+      - compile-for-linux
+      - compile-net-wrapper
+    steps:
+      - name: Pull Windows Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: native-windows
+          path: windows
+      - name: Pull Linux Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: native-linux
+          path: linux
+      - name: Pull .NET Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dotnet
+          path: dotnet
+      - name: Verify LICENSE Consistency
+        run: |
+          set +e
+          difference="$(diff --strip-trailing-cr -u windows/ImGuizmo-Bridge.LICENSE.txt linux/ImGuizmo-Bridge.LICENSE.txt)"
+          if [[ "$?" -ne 0 ]]; then
+            printf "Detected discrepancy in LICENSE files, aborting!\n\nDiff:\n%s\n" "$difference" >&2
+            exit 1
+          fi
+      - name: Package Results
+        run: |
+          mkdir package
+          mv windows/ImGuizmo-Bridge.dll package/
+          mv linux/libImGuizmo-Bridge.so package/
+          mv linux/ImGuizmo-Bridge.LICENSE.txt package/
+          mv dotnet/* package/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: imguizmo
+          path: package/*
