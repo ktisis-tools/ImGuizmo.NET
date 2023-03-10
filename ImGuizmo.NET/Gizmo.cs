@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace Ktisis.ImGuizmo;
 
-public static class ImGuizmo {
+public static class Gizmo {
 
 	/**
 	 * <summary>Initialize the Gizmo library.</summary>

@@ -21,7 +21,7 @@ If you wish to build for a different platform, set up your compiling environment
 When including this library in your project, you will need to provide both the .NET Assembly as well as the appropriate native assembly for your platform.
 
 In addition, you will need to provide your own Dear ImGui implementation with a compatible version.
-Link this library to your implementation at runtime by calling `Ktisis.ImGuizmo.ImGuizmo.Initialize` with your ImGui context and allocation functions. 
+Link this library to your implementation at runtime by calling `Ktisis.ImGuizmo.Gizmo.Initialize` with your ImGui context and allocation functions. 
 
 ## Acknowledgements
 
