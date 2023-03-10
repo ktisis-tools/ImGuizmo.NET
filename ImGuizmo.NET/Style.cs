@@ -29,5 +29,4 @@ public struct Style {
 	public Vector4 ColorHatchedAxisLines;
 	public Vector4 ColorText;
 	public Vector4 ColorTextShadow;
-	public Vector4 ColorCount;
 }
