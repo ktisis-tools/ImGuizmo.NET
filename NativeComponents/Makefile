@@ -24,7 +24,8 @@ os_target := libImGuizmo-Bridge.so
 endif
 
 ifndef write_file
-$(info Using shell auto-detection to determine the correct commands / args for your shell (supply `write_file` and `echo_empty` if generating the license fails))
+$(info Using shell auto-detection to determine the correct commands / args for your shell.)
+$(info (Supply `write_file` and `echo_empty` if generating the license fails))
 ifneq ($(findstring cmd.exe, $(SHELL)),)
 $(info Detected Windows cmd.exe.)
 write_file := type
