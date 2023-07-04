@@ -89,7 +89,7 @@ else
 endif
 	@$(write_file) ../LICENSE > $@
 	@$(echo_empty) >> $@
-	@echo Contains code from ImGui, licensed under the following terms: >> $@
+	@echo Contains code from Dear ImGui, licensed under the following terms: >> $@
 	@$(echo_empty) >> $@
 	@$(write_file) ImGui/LICENSE.txt >> $@
 	@$(echo_empty) >> $@
