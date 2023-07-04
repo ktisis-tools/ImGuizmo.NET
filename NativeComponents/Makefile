@@ -53,23 +53,23 @@ IMGUIZMO_OBJS := $(addprefix ImGuizmo/obj/, ImGuizmo.o GraphEditor.o ImCurveEdit
 BRIDGE_OBJS := $(addprefix ImGuizmo.Bridge/obj/, bridge.o)
 
 ImGui/obj/%.o: ImGui/%.cpp ImGui/imgui.h ImGui/imgui_internal.h
-	$(call ensure_dir, $(@D))
+	$(call ensure_dir,$(@D))
 	$(call run_command, CXX, $(CXX), -c -o, $<, $(CXXFLAGS))
 
 ImGuizmo/obj/%.o: ImGuizmo/%.cpp ImGuizmo/%.h ImGui/imgui.h ImGui/imgui_internal.h
-	$(call ensure_dir, $(@D))
+	$(call ensure_dir,$(@D))
 	$(call run_command, CXX, $(CXX), -c -o, $<, $(CXXFLAGS))
 
 ImGuizmo/obj/%.o: ImGuizmo/%.cpp ImGui/imgui.h ImGui/imgui_internal.h
-	$(call ensure_dir, $(@D))
+	$(call ensure_dir,$(@D))
 	$(call run_command, CXX, $(CXX), -c -o, $<, $(CXXFLAGS))
 
 ImGuizmo.Bridge/obj/%.o: ImGuizmo.Bridge/src/%.cpp ImGuizmo.Bridge/include/%.h
-	$(call ensure_dir, $(@D))
+	$(call ensure_dir,$(@D))
 	$(call run_command, CXX, $(CXX), -c -o, $<, $(CXXFLAGS) -IImGuizmo.Bridge/include)
 
 ImGuizmo.Bridge/obj/%.o: ImGuizmo.Bridge/src/%.cpp
-	$(call ensure_dir, $(@D))
+	$(call ensure_dir,$(@D))
 	$(call run_command, CXX, $(CXX), -c -o, $<, $(CXXFLAGS) -IImGuizmo.Bridge/include)
 
 
