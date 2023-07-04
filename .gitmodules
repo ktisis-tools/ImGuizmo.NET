@@ -4,3 +4,4 @@
 [submodule "NativeComponents/ImGui"]
 	path = NativeComponents/ImGui
 	url = git@github.com:goatcorp/gc-imgui/
+	branch = 1.88-enhanced-abifix
