@@ -3,5 +3,5 @@
 	url = git@github.com:ktisis-tools/ImGuizmo
 [submodule "NativeComponents/ImGui"]
 	path = NativeComponents/ImGui
-	url = git@github.com:goatcorp/gc-imgui/
+	url = git@github.com:ktisis-tools/gc-imgui/
 	branch = 1.88-enhanced-abifix
