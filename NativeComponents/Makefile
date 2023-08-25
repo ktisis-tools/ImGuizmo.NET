@@ -23,9 +23,6 @@ else
 os_target := libImGuizmo-Bridge.so
 endif
 
-ifndef write_file
-$(info Using shell auto-detection to determine the correct commands / args for your shell.)
-$(info (Supply `write_file` and `echo_empty` if generating the license fails))
 ifeq ($(shell echo %COMSPEC%), %COMSPEC%)
 $(info Detected POSIX-compatible shell.)
 write_file := cat
@@ -44,7 +41,6 @@ define ensure_dir
 endef
 endif
 
-endif
 
 .PHONY: clean build
 
