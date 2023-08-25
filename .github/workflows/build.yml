@@ -17,6 +17,11 @@ jobs:
         run: |
           cd NativeComponents/
           make
+      - name: Dump Result Dependencies
+        shell: cmd
+        run: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
+          dumpbin /DEPENDENTS NativeComponents\ImGuizmo-Bridge.dll
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
