@@ -31,6 +31,14 @@ echo_empty := echo
 define ensure_dir
 	@mkdir -p $(1)
 endef
+
+ifndef STATIC_LIBWINPTHREAD
+ifneq (,$(findstring MSYS_NT,$(shell uname -s)))
+$(info Detected MSYS2 build environment.)
+STATIC_LIBWINPTHREAD=y
+endif
+endif
+
 else
 $(info Detected Windows cmd.exe.)
 write_file := type
@@ -39,6 +47,17 @@ echo_empty := echo.
 define ensure_dir
 	@if not exist "$(1)" ( mkdir "$(1)" )
 endef
+
+ifndef STATIC_LIBWINPTHREAD
+$(info Assuming MSYS2 build environment.)
+$(info Specify STATIC_LIBWINPTHREAD=n if you receive errors regarding 'winpthread'.)
+STATIC_LIBWINPTHREAD=y
+endif
+
+endif
+
+ifeq ($(STATIC_LIBWINPTHREAD),y)
+override CXXLDFLAGS += -Wl,--push-state -Wl,-Bstatic -Wl,--whole-archive -Wl,-lwinpthread -Wl,--pop-state
 endif
 
 
