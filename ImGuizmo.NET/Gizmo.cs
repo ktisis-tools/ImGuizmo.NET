@@ -214,6 +214,7 @@ public static class Gizmo {
 
 	private static float _gizmoScale = 0.1f;
 
+	/** <summary>The Gizmo's size, as a factor of the clipping rect area.</summary> */
 	[PublicAPI]
 	public static float GizmoScale {
 		get => _gizmoScale;
