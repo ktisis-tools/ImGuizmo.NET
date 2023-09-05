@@ -212,14 +212,14 @@ public static class Gizmo {
 		}
 	}
 
-	private static float _gizmoSizeClipSpace = 0.1f;
+	private static float _gizmoScale = 0.1f;
 
 	[PublicAPI]
-	public static float GizmoSizeClipSpace {
-		get => _gizmoSizeClipSpace;
+	public static float GizmoScale {
+		get => _gizmoScale;
 		set {
 			NativeInterface.Ktisis_ImGuizmo_SetGizmoSizeClipSpace(value);
-			_gizmoSizeClipSpace = value;
+			_gizmoScale = value;
 		}
 	}
 
