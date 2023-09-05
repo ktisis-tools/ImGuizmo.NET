@@ -27,6 +27,10 @@ internal static class NativeInterface {
 	[DllImport("ImGuizmo-Bridge")]
 	extern internal static void Ktisis_ImGuizmo_SetRect(float x, float y, float width, float height);
 	[DllImport("ImGuizmo-Bridge")]
+	extern internal static void Ktisis_ImGuizmo_SetID(int id);
+	[DllImport("ImGuizmo-Bridge")]
+	extern internal static void Ktisis_ImGuizmo_SetGizmoSizeClipSpace(float value);
+	[DllImport("ImGuizmo-Bridge")]
 	extern internal static void Ktisis_ImGuizmo_Enable(bool enabled);
 
 	[DllImport("ImGuizmo-Bridge")]

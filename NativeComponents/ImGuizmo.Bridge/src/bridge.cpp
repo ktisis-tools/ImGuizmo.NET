@@ -28,6 +28,8 @@ void Ktisis_ImGuizmo_AllowAxisFlip(bool value) { ImGuizmo::AllowAxisFlip(value);
 void Ktisis_ImGuizmo_BeginFrame() { ImGuizmo::BeginFrame(); }
 void Ktisis_ImGuizmo_SetDrawlist(ImDrawList* drawList) { ImGuizmo::SetDrawlist(drawList); }
 void Ktisis_ImGuizmo_SetRect(float x, float y, float width, float height) { ImGuizmo::SetRect(x, y, width, height); }
+void Ktisis_ImGuizmo_SetID(int id) { ImGuizmo::SetID(id); }
+void Ktisis_ImGuizmo_SetGizmoSizeClipSpace(float value) { ImGuizmo::SetGizmoSizeClipSpace(value); }
 void Ktisis_ImGuizmo_Enable(bool enabled) { ImGuizmo::Enable(enabled); }
 bool Ktisis_ImGuizmo_Manipulate(
 	const float* view,

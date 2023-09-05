@@ -201,4 +201,26 @@ public static class Gizmo {
 	[PublicAPI]
 	public static unsafe ref Style Style => ref *NativeInterface.Ktisis_ImGuizmo_GetStyle();
 
+	private static int _id = -1;
+
+	[PublicAPI]
+	public static int ID {
+		get => _id;
+		set {
+			NativeInterface.Ktisis_ImGuizmo_SetID(value);
+			_id = value;
+		}
+	}
+
+	private static float _gizmoSizeClipSpace = 0.1f;
+
+	[PublicAPI]
+	public static float GizmoSizeClipSpace {
+		get => _gizmoSizeClipSpace;
+		set {
+			NativeInterface.Ktisis_ImGuizmo_SetGizmoSizeClipSpace(value);
+			_gizmoSizeClipSpace = value;
+		}
+	}
+
 }

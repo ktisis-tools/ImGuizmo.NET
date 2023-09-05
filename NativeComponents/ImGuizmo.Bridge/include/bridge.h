@@ -34,6 +34,8 @@ BRIDGE_API void Ktisis_ImGuizmo_AllowAxisFlip(bool value);
 BRIDGE_API void Ktisis_ImGuizmo_BeginFrame();
 BRIDGE_API void Ktisis_ImGuizmo_SetDrawlist(ImDrawList* drawList);
 BRIDGE_API void Ktisis_ImGuizmo_SetRect(float x, float y, float width, float height);
+BRIDGE_API void Ktisis_ImGuizmo_SetID(int id);
+BRIDGE_API void Ktisis_ImGuizmo_SetGizmoSizeClipSpace(float value);
 BRIDGE_API void Ktisis_ImGuizmo_Enable(bool enabled);
 BRIDGE_API bool Ktisis_ImGuizmo_Manipulate(
 	const float* view,
