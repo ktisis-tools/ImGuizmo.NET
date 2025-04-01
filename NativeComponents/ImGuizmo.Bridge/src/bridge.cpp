@@ -47,3 +47,4 @@ bool Ktisis_ImGuizmo_Manipulate(
 
 bool Ktisis_ImGuizmo_IsUsing() { return ImGuizmo::IsUsing(); }
 bool Ktisis_ImGuizmo_IsOver0() { return ImGuizmo::IsOver(); }
+int Ktisis_ImGuizmo_CurrentOperation() { return ImGuizmo::GetCurrentOperation(); }

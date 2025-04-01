@@ -51,5 +51,6 @@ BRIDGE_API bool Ktisis_ImGuizmo_Manipulate(
 
 BRIDGE_API bool Ktisis_ImGuizmo_IsUsing();
 BRIDGE_API bool Ktisis_ImGuizmo_IsOver0();
+BRIDGE_API int Ktisis_ImGuizmo_CurrentOperation();
 
 }
