@@ -50,5 +50,6 @@ internal static class NativeInterface {
 	extern internal static bool Ktisis_ImGuizmo_IsUsing();
 	[DllImport("ImGuizmo-Bridge")]
 	extern internal static bool Ktisis_ImGuizmo_IsOver0();
-
+	[DllImport("ImGuizmo-Bridge")]
+	extern internal static Operation Ktisis_ImGuizmo_CurrentOperation();
 }

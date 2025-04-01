@@ -224,4 +224,9 @@ public static class Gizmo {
 		}
 	}
 
+	/** <summary>The current operation being performed.</summary> */
+	[PublicAPI]
+	public static Operation CurrentOperation {
+		get => NativeInterface.Ktisis_ImGuizmo_CurrentOperation();
+	}
 }
