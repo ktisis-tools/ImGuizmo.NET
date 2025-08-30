@@ -23,7 +23,7 @@ jobs:
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
           dumpbin /DEPENDENTS NativeComponents\ImGuizmo-Bridge.dll
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: native-windows
           path: |
@@ -43,7 +43,7 @@ jobs:
           cd NativeComponents/
           make
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: native-linux
           path: |
@@ -67,7 +67,7 @@ jobs:
           cd ImGuizmo.NET
           dotnet build -c Release --nologo -o ../bin/Release
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dotnet
           path: |
@@ -112,7 +112,7 @@ jobs:
           mv linux/ImGuizmo-Bridge.LICENSE.txt package/
           mv dotnet/* package/
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: imguizmo
           path: package/*
